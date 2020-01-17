@@ -31,7 +31,7 @@ function getForecast() {
  and 5 days-forecast  for 9.00am
  */
 function getWeatherInfo(forecast) {
-    const current = new Date();
+    const current = new Date(forecast.list[0].dt_txt);
     let info = [forecast.list[0]];
     for(let i = 1; i < forecast.list.length; i++) {
         if(selectWeather(forecast.list[i].dt_txt, current)) {
