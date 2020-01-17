@@ -46,7 +46,8 @@ const createResponse = info => {
     const reportContainer = $('.weather_report');
     info.forEach(item => {
         const date = item.dt_txt.split(' '); // y-m-d and time
-        const dateBlock = createDiv().text(date[0]);
+        const normalDate = date[0].split('-').reverse().join('.');
+        const dateBlock = createDiv().text(normalDate);
         const img = $('<img />', {
             src: WEATHER_API.icon.replace('__img__', item.weather[0].icon)
         });
