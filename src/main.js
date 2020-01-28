@@ -72,7 +72,11 @@ const textBlock = item => {
 // returns true for 9.00am forecast
 function selectWeather(item, currentDate) {
     const date = new Date(item);
-    return currentDate.getDate() < date.getDate() && date.getHours() === 9;
+    if(date.getMonth() === currentDate.getMonth()) {
+        return currentDate.getDate() < date.getDate() && date.getHours() === 9;
+    } else { // next month
+        return date.getHours() === 9;
+    }
 }
 
 const clearPreviousResult = () => {
