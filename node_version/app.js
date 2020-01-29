@@ -27,7 +27,7 @@ router.post('/', function(req, res) {
         }
         let weather = JSON.parse(body);
         if(weather.cod == 404) {
-            return res.render('index', {weather: null, error: 'City not found'});
+            return res.render('index', {weather: null, error: 'City not found '});
         }
         return res.render('index', {weather: forecast(weather), error: null});
     });
