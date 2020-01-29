@@ -19,18 +19,20 @@ router.get('/', function (req, res) {
 
 router.post('/', function(req, res) {
     let city = req.body.city;
-    let url = WEATHER_API.url + city + WEATHER_API.ending;
+    if(city) {
+        let url = WEATHER_API.url + city + WEATHER_API.ending;
 
-    request(url, function(err, response, body) {
-        if(err) {
-            return res.render('index', {weather: null, error: 'City not found'});
-        }
-        let weather = JSON.parse(body);
-        if(weather.cod == 404) {
-            return res.render('index', {weather: null, error: 'City not found '});
-        }
-        return res.render('index', {weather: forecast(weather), error: null});
-    });
+        request(url, function(err, response, body) {
+            if(err) {
+                return res.render('index', {weather: null, error: 'City not found'});
+            }
+            let weather = JSON.parse(body);
+            if(weather.cod == 404) {
+                return res.render('index', {weather: null, error: 'City not found '});
+            }
+            return res.render('index', {weather: forecast(weather), error: null});
+        });
+    }
 });
 
 app.use('/', router);
