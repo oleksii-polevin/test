@@ -3,18 +3,18 @@ const forecastModule = (result) => {
     const FORECAST_TIME = 9;
 
     // returns true for 9.00am forecast
-    function selectWeather(item, currentDate) {
+    const selectWeather = (item, currentDate) => {
         const date = new Date(item);
         if (date.getMonth() === currentDate.getMonth()) {
             return currentDate.getDate() < date.getDate() && date.getHours() === FORECAST_TIME;
         }
         return date.getHours() === FORECAST_TIME;
-    }
+    };
 
     /* returns forecast consists of current weather results
     and 5 days-forecast  for 9.00am
     */
-    function getWeatherInfo(forecast) {
+    const getWeatherInfo = (forecast) => {
         const current = new Date(forecast.list[0].dt_txt);
         const info = [forecast.list[0]];
         for (let i = 1; i < forecast.list.length; i += 1) {
@@ -23,7 +23,7 @@ const forecastModule = (result) => {
             }
         }
         return info;
-    }
+    };
 
     // forecast text
     const responseBlock = (item) => {
