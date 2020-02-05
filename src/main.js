@@ -33,7 +33,7 @@ const forecastModule = (result) => {
         const weather = `<div class='col mr-2 mb-2 result'>
         <p>${normalDate}</p>
         <img src=${icon} alt='img'>
-        temperature: ${parseInt(item.main.temp, 10)}C <br>
+        temperature: ${parseInt(item.main.temp, 10)}C&deg<br>
         pressure: ${item.main.pressure}hPa <br>
         humidity: ${item.main.humidity}% <br>
         wind: ${item.wind.speed}m/s</div>`;
